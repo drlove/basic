@@ -1,27 +1,24 @@
 const db = new Dexie("basic_pwa_db");
 
-/*
-  Versioning rule:
-  - Increment version when schema changes
-  - Never delete stores in-place
-*/
-
 db.version(1).stores({
   notes: "++id, type, createdAt, updatedAt",
   outbox: "++id, entity, action, createdAt"
 });
 
-/*
-  Common timestamps enforced centrally
-*/
-db.on("creating", (primKey, obj) => {
+/* ---------- TABLE HOOKS (CORRECT) ---------- */
+
+db.notes.hook("creating", (primKey, obj) => {
   const now = new Date().toISOString();
   obj.createdAt = now;
   obj.updatedAt = now;
 });
 
-db.on("updating", (mods, primKey, obj) => {
+db.notes.hook("updating", (mods) => {
   mods.updatedAt = new Date().toISOString();
+});
+
+db.outbox.hook("creating", (primKey, obj) => {
+  obj.createdAt = new Date().toISOString();
 });
 
 export { db };
