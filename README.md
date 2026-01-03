@@ -9,7 +9,7 @@ A minimal, framework-agnostic Progressive Web App starter.
 
 ## Usage
 ```bash
-git clone https://github.com/YOUR_USERNAME/basic.git
+git clone https://github.com/drlove/basic.git
 cd basic
 
 
