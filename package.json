@@ -1,0 +1,28 @@
+{
+  "name": "basic",
+  "version": "1.0.0",
+  "description": "A minimal, framework-agnostic Progressive Web App starter.",
+  "main": "service-worker.js",
+  "type": "commonjs",
+
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drlove/basic.git"
+  },
+
+  "license": "ISC",
+
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  },
+
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
+
